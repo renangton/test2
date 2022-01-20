@@ -2,6 +2,7 @@ package test2;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +58,17 @@ public class Main {
 			break;
 		} 
 		System.out.println("3年後の今日は" + dayJpn);
+		
+		// 課題3_追加課題　DateTimeformatterを使ってみる
+		// 日付パターンを指定
+		DateTimeFormatter timeFormat1 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String timeDisp = today.format(timeFormat1);
+		System.out.println("現在日時ver1：" + timeDisp);
+		
+		// 書式パターンを使用
+		DateTimeFormatter timeFormat2 = DateTimeFormatter.ISO_LOCAL_DATE;
+		String timeDisp2 = today.format(timeFormat2);
+		System.out.println("現在日時ver2:" + timeDisp2);
 		
 		// 課題4　引数が0なら偽、1なら真を出力　& 課題6　例外処理
 		System.out.print("0か1を入力してください:");
