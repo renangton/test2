@@ -2,6 +2,7 @@ package test2;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +33,42 @@ public class Main {
 		
 		//　3年後の今日の曜日を所得
 		DayOfWeek day = today.plusYears(3).getDayOfWeek();
-		System.out.println("3年後の今日は" + day);
+		String dayJpn = "";
+		switch(day) {
+		case SUNDAY :
+			dayJpn = "日曜日";
+			break;
+		case MONDAY :
+			dayJpn = "月曜日";
+			break;
+		case TUESDAY :
+			dayJpn = "火曜日";
+			break;
+		case WEDNESDAY :
+			dayJpn = "水曜日";
+			break;
+		case THURSDAY :
+			dayJpn = "木曜日";
+			break;
+		case FRIDAY :
+			dayJpn = "金曜日";
+			break;
+		case SATURDAY :
+			dayJpn = "土曜日";
+			break;
+		} 
+		System.out.println("3年後の今日は" + dayJpn);
+		
+		// 課題3_追加課題　DateTimeformatterを使ってみる
+		// 日付パターンを指定
+		DateTimeFormatter timeFormat1 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String timeDisp = today.format(timeFormat1);
+		System.out.println("現在日時ver1：" + timeDisp);
+		
+		// 書式パターンを使用
+		DateTimeFormatter timeFormat2 = DateTimeFormatter.ISO_LOCAL_DATE;
+		String timeDisp2 = today.format(timeFormat2);
+		System.out.println("現在日時ver2:" + timeDisp2);
 		
 		// 課題4　引数が0なら偽、1なら真を出力　& 課題6　例外処理
 		System.out.print("0か1を入力してください:");
@@ -48,13 +84,13 @@ public class Main {
 		
 		// 課題5-1　String型のListを作成　& 課題6　例外処理
 		List<String> list1 = new ArrayList<String>();
-		// 要素[0]にAを追加
+		// 要素[0]に坂井を追加
 		list1.add("坂井");
 		list1.add("原");
 		list1.add("末次");
-		// 要素[2]にEを追加し、[2]以降に格納されたものを、後ろにずらす
+		// 要素[2]に田村を追加し、[2]以降に格納されたものを、後ろにずらす
 		list1.add(2, "田村");
-		// 要素[1]のBをDに更新
+		// 要素[1]の原を杉本に更新
 		list1.set(1, "杉本");
 		for(String name : list1) {
 			System.out.print(name + " ");
